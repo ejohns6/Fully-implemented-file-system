@@ -1,0 +1,36 @@
+What the program does:
+run by ./vmufs {img} {mount point}
+
+To check if the file is correct I am checking the ROOT img signature by checking img ROOT signature
+It then checks to see that the FAT agrees with the ROOT
+It then finds all files and the info. Then does the what the readdir, getattr, open and read is supposed to
+do. 
+
+Assumptions made:
+The file is supposed amount of 256 blocks and each block is 512 bytes
+The file directory is set of that it is every 32 bytes,
+thus a file will start on a byte that is divisible by 32.
+
+Decisions:
+Decided to go with a lot of global variables instead of
+calling and creating temporary data structs and rechecking eachtime.
+
+The file functions are called _getattr, _readdir, _open, and _read since readdir, open and read
+there is conflicting. 
+
+Note: If a file was not mounted correctly because it was already mounted just call unmount and give it more time
+
+The References that I found and used where:
+
+	-https://github.com/libfuse/libfuse/blob/master/example/hello.c
+	Used this as the example, skeleton, and to build it on
+
+	-https://www.daniweb.com/programming/software-development/threads/286740/how-to-only-read-the-first-100-bytes-and-the-last-100-bytes-from-a-binary-file 
+	Reference to move the pointer to where i need the pointer in the img
+
+	-https://stackoverflow.com/questions/12510874/how-can-i-check-if-a-directory-exists 
+	Checks to see if the directory exists
+
+	-https://stackoverflow.com/questions/7430248/creating-a-new-directory-in-c
+	This was the reference for checking to make the directory if it wasn’t already made
+

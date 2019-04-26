@@ -1,0 +1,23 @@
+What the program does:
+run by ./vmufs {img} {mount point}
+
+Note:
+Due to the nano and the file name being pretty inclusive swp will be created for some of the files. But 
+because of this space will be used more than expected
+
+New file names will not have the ability to have a "/" in it, be ".", be ".." or be
+
+There is a good deal of printf's in the program to help and see if any error is spotted
+
+Added the vanilla so that the restore can be used if wanted
+
+When the img file runs out of space it will return an error but the file witll havethe blocks assigned 
+to it till stated otherwise and it can write with those blocks till otherwise
+
+The References that I found and used where:
+
+	-https://www.cs.hmc.edu/~geoff/classes/hmc.cs135.201001/homework/fuse/fuse_doc.html
+		Used this for basically all the info I had
+
+
+
